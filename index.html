@@ -1,0 +1,29 @@
+<html>
+    <head>
+        <title>Calculadora de rede e broadcast</title>
+        <link rel="stylesheet" href="./css/bootstrap.min.css">
+        <link rel="stylesheet" href="./css/default.css">
+        <script src="./js/jquery.js"></script>
+        <script src="./js/pooper.min.js"></script>
+        <script src="./js/bootstrap.min.js"></script>
+        <script src="./js/jquery.mask.min.js"></script>
+    </head>
+    <body>
+        <div class="container">
+            <div class="form-group">
+                <div class="meuForm">
+                    <form id="formCalc">  
+                        <h3 class="tituloCalc">Calculadora de Rede e Broadcast</h1>
+                        <label for="ip">Digite o IP:</label>
+                        <input type="text" name="ip" id="ip" class="form-control ip_address" autocomplete="off" maxlength="15"  autofocus>
+                        <label for="mascara">Digite a Máscara:</label>
+                        <input type="text" name="mascara" id="mascara" class="form-control ip_address" autocomplete="off" maxlength="15">
+                        <br>
+                        <button type="button" onclick="calcular()" class="btn btn-block btn-primary">Calcular</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <script src="./js/default.js"></script>
+    </body>
+</html>
