@@ -17,21 +17,31 @@ function calcular(){
 			var mascBarraN = mascBin.indexOf('0');
 			var ip = ipBin.substring(0, mascBarraN);
 			var numDir = 32-ip.length;
+			var hosts = Math.pow(2, numDir)-2;
+			var inicioHosts = ip + "0".repeat(numDir-1)+"1";
+			var fimHosts = ip + "1".repeat(numDir-1)+"0";
 			var redeBin = ip + "0".repeat(numDir);
 			var broadcastBin = ip + "1".repeat(numDir);
-			var x=0, y=8, redeArr=[], broadcastArr=[];
+			var x=0, y=8, redeArr=[], broadcastArr=[], inicioHostsArr=[], fimhostsArr=[];
 			for(var i=0; i< 4; i++){
 				redeArr[i] = redeBin.substring(x,y)
 				redeArr[i] = parseInt(redeArr[i],2);
 				broadcastArr[i] = broadcastBin.substring(x,y)
 				broadcastArr[i] = parseInt(broadcastArr[i],2);
+				inicioHostsArr[i] = inicioHosts.substring(x,y)
+				inicioHostsArr[i] = parseInt(inicioHostsArr[i],2);
+				fimhostsArr[i] = fimHosts.substring(x,y)
+				fimhostsArr[i] = parseInt(fimhostsArr[i],2);
 				x+=8;y+=8;
 			} 
 			
 			$('#divErro').remove();
-			$('.tituloCalc').after('<div class="alert alert-success alert-dismissible fade show" role="alert" id="divErro">'+
+			$('.meuForm').before('<div class="alert alert-success alert-dismissible fade show" role="alert" id="divErro">'+
 				'Rede: <strong>'+redeArr.toString().replace(/,/g,".")+' </strong><br>'+
-				'Broadcast: <strong>'+broadcastArr.toString().replace(/,/g,".")+'</strong> '+
+				'Broadcast: <strong>'+broadcastArr.toString().replace(/,/g,".")+'</strong><br>'+
+				'Hosts: <strong>'+hosts+' ativos</strong><br>'+
+				'Início dos Hosts: <strong>'+inicioHostsArr.toString().replace(/,/g,".")+' </strong><br>'+
+				'Fim dos Hosts: <strong>'+fimhostsArr.toString().replace(/,/g,".")+'</strong> '+
 				'<button type="button" class="close" data-dismiss="alert" aria-label="Close">'+
 					'<span aria-hidden="true">&times;</span>'+
 					'</button>'+
